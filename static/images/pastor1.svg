@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="100" fill="#E2E8F0"/>
+  <!-- Circle Frame -->
+  <circle cx="100" cy="100" r="98" stroke="#3B82F6" stroke-width="4"/>
+  <!-- Body/Suit -->
+  <path d="M40 185 C40 145 65 130 100 130 C135 130 160 145 160 185 Z" fill="#1E293B"/>
+  <!-- Clerical Collar / Tie -->
+  <path d="M88 130 H112 V155 H88 Z" fill="#FFFFFF"/>
+  <rect x="94" y="130" width="12" height="12" fill="#FFFFFF"/>
+  <polygon points="100,146 95,175 105,175" fill="#DC2626"/>
+  <!-- Head -->
+  <circle cx="100" cy="85" r="38" fill="#FBD38D"/>
+  <!-- Hair -->
+  <path d="M62 82 C62 55 75 48 100 48 C125 48 138 55 138 82 C138 85 130 65 100 65 C70 65 62 85 62 82 Z" fill="#1A202C"/>
+  <!-- Gentle Smile & Glasses -->
+  <circle cx="86" cy="84" r="8" stroke="#4A5568" stroke-width="2" fill="none"/>
+  <circle cx="114" cy="84" r="8" stroke="#4A5568" stroke-width="2" fill="none"/>
+  <line x1="94" y1="84" x2="106" y2="84" stroke="#4A5568" stroke-width="2"/>
+  <path d="M92 102 Q100 110 108 102" stroke="#4A5568" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Cross Badge -->
+  <circle cx="145" cy="155" r="14" fill="#F59E0B"/>
+  <path d="M143 147 H147 V153 H151 V157 H147 V163 H143 V157 H139 V153 H143 Z" fill="#FFFFFF"/>
+</svg>

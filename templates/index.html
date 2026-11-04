@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국군수송중앙교회 | 국군수송사령부 통합 사역 포털</title>
+  <link rel="icon" href="/static/images/church-logo.png" type="image/png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            trans: {
+              navy: '#0A2E5C',
+              'navy-dark': '#061B36',
+              green: '#2B5927',
+              'green-light': '#3D7537',
+              sky: '#3BA7D8',
+              'sky-light': '#EBF6FC',
+              gold: '#DDA112',
+              'gold-light': '#F7C644',
+              red: '#D32F2F'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-[#F3F6F9] text-slate-800 antialiased selection:bg-sky-100 selection:text-sky-900">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none"></div>
+
+  <!-- ======================================================== -->
+  <!-- 1. PUBLIC VIEW (수송 장병, 군 가족, 외부 위문 성도용) -->
+  <!-- ======================================================== -->
+  <div id="main-public-view">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/90 shadow-xs transition-smooth">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+        
+        <!-- Logo & Command Identity (Home Button) -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="relative w-11 h-11 flex-shrink-0 flex items-center justify-center">
+            <img src="/static/images/church-logo.png" alt="국군수송사령부 국군수송중앙교회 로고" class="nav-logo-img object-contain drop-shadow-sm transition-transform group-hover:scale-105" style="width: 44px; height: 44px; max-width: 44px; max-height: 44px;">
+          </div>
+          <div class="flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[9px] font-extrabold tracking-wider uppercase text-trans-green bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60 leading-none">
+                국군수송사령부 • R.O.K. Transportation Command
+              </span>
+            </div>
+            <h1 class="text-lg sm:text-xl font-extrabold text-trans-navy tracking-tight group-hover:text-trans-sky transition-colors flex items-center gap-2 mt-0.5 leading-tight">
+              국군수송중앙교회
+              <span class="text-[11px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 hidden sm:inline-block">영적 안식처</span>
+            </h1>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+          <a href="#pastors" class="hover:text-trans-navy transition-colors">목회자 소개</a>
+          <a href="#services-events" class="hover:text-trans-navy transition-colors">예배·행사 안내</a>
+          <a href="#counseling" class="hover:text-trans-navy transition-colors">1:1 비밀상담</a>
+          <a href="#visitations" class="hover:text-trans-navy transition-colors">주말 위문신청</a>
+          <a href="#donations" class="hover:text-trans-navy transition-colors">후원 안내</a>
+        </nav>
+
+        <!-- Right Side: Admin Access Button -->
+        <div class="flex items-center gap-3">
+          <button onclick="openAdminAuthModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-trans-navy bg-slate-100 hover:bg-slate-200 rounded-xl transition-smooth border border-slate-200 shadow-2xs">
+            <span>🔒 목회자/관리자</span>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Hero Section (엠블럼 컬러 팔레트: Deep Navy + Forest Green + Sky Blue + Gold) -->
+    <section id="home" class="relative hero-gradient text-white pt-16 pb-24 overflow-hidden border-b-4 border-trans-gold">
+      <!-- Background Accents -->
+      <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Hero Text (8 cols) -->
+          <div class="lg:col-span-8 max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-amber-300 mb-6 shadow-sm">
+              <span>⚓ 육·해·공 국군수송사령부 장병들의 든든한 영적 보급선</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+              안전 수송, 승리의 길을 여는<br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-sky-200 to-white">
+                국군수송중앙교회에 오신 것을 환영합니다
+              </span>
+            </h2>
+            
+            <p class="text-base sm:text-lg text-slate-200 mb-8 leading-relaxed font-normal">
+              대한민국의 모든 전선과 후방을 잇는 국군수송사령부 장병과 군 가족들이 하나님의 은혜 안에서 평안을 얻고, 안전하게 군 복무를 완수할 수 있도록 기도로 함께합니다.
+            </p>
+
+            <!-- 이번 주 말씀 구절 배너 -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-4 shadow-xl">
+              <div class="flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">
+                <span>📖 이번 주 은혜의 말씀</span>
+              </div>
+              <p class="text-sm sm:text-base font-medium text-slate-100 italic leading-relaxed">
+                “내가 네 갈 길을 가르쳐 보이고 너를 주목하여 훈계하리로다. 여호와를 신뢰하는 자에게는 인자하심이 두르리로다”
+              </p>
+              <p class="text-xs text-amber-300 text-right mt-1.5 font-semibold">- 시편 32편 8, 10절 -</p>
+            </div>
+          </div>
+
+          <!-- Hero Emblem Showcase (4 cols) -->
+          <div class="lg:col-span-4 hidden lg:flex flex-col items-center justify-center">
+            <div class="w-64 h-64 p-3 bg-white/10 backdrop-blur-md rounded-full border-2 border-white/30 shadow-2xl flex items-center justify-center hover:scale-105 transition-transform duration-500">
+              <img src="/static/images/church-logo.png" alt="국군수송사령부 엠블럼" class="w-56 h-56 object-contain drop-shadow-2xl">
+            </div>
+            <p class="text-xs text-slate-300 mt-3 font-medium">국군수송사령부 • R.O.K. Transportation Command</p>
+          </div>
+
+        </div>
+
+        <!-- 4대 빠른 액션 카드 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+          
+          <a href="#counseling" class="bg-white text-slate-900 rounded-2xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-smooth border border-slate-100 group">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-trans-navy flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+              🤝
+            </div>
+            <h3 class="font-bold text-base mb-1 group-hover:text-trans-navy transition-colors">1:1 비밀상담 신청</h3>
+            <p class="text-xs text-slate-500 leading-snug">목사님과 1:1 비밀 보장 마음·신앙 상담 예약</p>
+            <span class="inline-block mt-3 text-xs font-bold text-trans-sky">가능 시간 확인 →</span>
+          </a>
+
+          <a href="#visitations" class="bg-white text-slate-900 rounded-2xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-smooth border border-slate-100 group">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+              🎁
+            </div>
+            <h3 class="font-bold text-base mb-1 group-hover:text-amber-600 transition-colors">주말 위문 방문신청</h3>
+            <p class="text-xs text-slate-500 leading-snug">외부 교회 및 선교단체 주말 슬롯 중복 방지 예약</p>
+            <span class="inline-block mt-3 text-xs font-bold text-amber-600">빈 슬롯 확인 →</span>
+          </a>
+
+          <a href="#services-events" class="bg-white text-slate-900 rounded-2xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-smooth border border-slate-100 group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-trans-green flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+              ✨
+            </div>
+            <h3 class="font-bold text-base mb-1 group-hover:text-trans-green transition-colors">특별 행사·세례 접수</h3>
+            <p class="text-xs text-slate-500 leading-snug">수송 장병 세례식, 영성 수련회 온라인 참가 신청</p>
+            <span class="inline-block mt-3 text-xs font-bold text-trans-green">진행 행사 보기 →</span>
+          </a>
+
+          <a href="#donations" class="bg-white text-slate-900 rounded-2xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-smooth border border-slate-100 group">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+              💖
+            </div>
+            <h3 class="font-bold text-base mb-1 group-hover:text-purple-700 transition-colors">선교 후원 계좌</h3>
+            <p class="text-xs text-slate-500 leading-snug">우리은행 후원 계좌 복사 및 입금 통보</p>
+            <span class="inline-block mt-3 text-xs font-bold text-purple-700">계좌 복사하기 →</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 2. 목회자 소개 섹션 (3인) -->
+    <!-- ======================================================== -->
+    <section id="pastors" class="py-20 bg-slate-100/70 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-wider text-trans-navy uppercase bg-blue-50 px-3.5 py-1 rounded-full border border-blue-200">CLERGY PROFILE</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">섬기는 목회자 소개</h2>
+          <p class="text-sm text-slate-500 mt-2">국군수송사령부 장병들과 동고동락하며 영혼을 돌보는 세 분의 목회자를 소개합니다.</p>
+        </div>
+
+        <!-- Pastors Dynamic Grid -->
+        <div id="pastors-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Dynamically populated via app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 3. 예배 시간 & 행사 접수 섹션 -->
+    <!-- ======================================================== -->
+    <section id="services-events" class="py-20 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-xs font-bold tracking-wider text-trans-green uppercase bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-200">WORSHIP & EVENTS</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">예배 및 행사 안내</h2>
+            <p class="text-sm text-slate-500 mt-1">국군수송중앙교회 정기 예배 시간표와 장병들을 위한 특별 교육·행사 접수 현황입니다.</p>
+          </div>
+
+          <!-- Tabs Toggle -->
+          <div class="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200">
+            <button id="tab-btn-regular" class="tab-active px-5 py-2 text-xs font-bold rounded-lg transition-smooth">
+              정기 예배 안내
+            </button>
+            <button id="tab-btn-special" class="px-5 py-2 text-xs font-bold text-slate-600 rounded-lg hover:text-slate-900 transition-smooth">
+              특별 행사 & 접수
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 1: 정기 예배 안내 -->
+        <div id="view-regular-services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div id="regular-services-list" class="contents">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 2: 특별 행사 접수 -->
+        <div id="view-special-events" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div id="special-events-list" class="contents">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 4. 1:1 신앙·마음 상담 신청 섹션 -->
+    <!-- ======================================================== -->
+    <section id="counseling" class="py-20 bg-[#F3F6F9] border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold tracking-wider text-trans-navy uppercase bg-blue-50 px-3.5 py-1 rounded-full border border-blue-200">1:1 COUNSELING</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">1:1 신앙·마음 상담 신청</h2>
+          <p class="text-sm text-slate-500 mt-2">
+            말하기 힘든 군생활의 고민, 신앙 질문, 진로 상담을 목사님과 1:1로 편안하게 나눌 수 있습니다.<br>
+            <span class="text-trans-navy font-semibold">🔒 모든 상담 내용은 철저한 비밀이 보장됩니다. (가명 접수 가능)</span>
+          </p>
+
+          <!-- Sub Tabs: 신청 vs 조회 -->
+          <div class="inline-flex mt-6 p-1 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <button id="tab-counsel-apply" class="tab-active px-6 py-2.5 text-xs font-bold rounded-lg transition-smooth">
+              상담 예약하기
+            </button>
+            <button id="tab-counsel-check" class="px-6 py-2.5 text-xs font-bold text-slate-600 rounded-lg hover:text-slate-900 transition-smooth">
+              내 신청 내역 조회 (비밀번호)
+            </button>
+          </div>
+        </div>
+
+        <!-- Form 1: 상담 신청하기 -->
+        <div id="form-counsel-apply" class="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200">
+          <form id="form-counseling-apply" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">성명 또는 가명 <span class="text-red-500">*</span></label>
+                <input type="text" id="counsel-name" required placeholder="본명 또는 부르고 싶은 가명" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+              </div>
+              <div class="flex items-center pt-6">
+                <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-slate-600">
+                  <input type="checkbox" id="counsel-anon" class="w-4 h-4 text-trans-navy rounded">
+                  <span>익명/가명으로 신청합니다 (비밀 보장)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">소속 부대 (선택)</label>
+                <input type="text" id="counsel-unit" placeholder="예: 국군수송사령부 본부근무대 / 호송대 등" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">계급 (선택)</label>
+                <input type="text" id="counsel-rank" placeholder="예: 일병, 상병, 간부, 군가족 등" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">연락처 <span class="text-red-500">*</span></label>
+                <input type="tel" id="counsel-phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                <p class="text-[11px] text-slate-400 mt-1">상담 확정 문자 안내를 위해 필요합니다.</p>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">조회용 비밀번호 (숫자 4자리) <span class="text-red-500">*</span></label>
+                <input type="password" id="counsel-passcode" maxlength="4" required placeholder="숫자 4자리 (예: 1234)" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-mono">
+                <p class="text-[11px] text-slate-400 mt-1">나중에 신청 상태를 비밀 조회할 때 사용됩니다.</p>
+              </div>
+            </div>
+
+            <!-- 상담 날짜 & 시간대 선택 -->
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1.5">
+                  🗓️ 희망 상담 일자 선택 (목사님 상담 가능일) <span class="text-red-500">*</span>
+                </label>
+                <select id="counsel-date-select" required class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-trans-navy font-medium">
+                  <option value="">일정을 불러오는 중입니다...</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1.5">
+                  ⏰ 상담 시간대 선택 <span class="text-red-500">*</span>
+                </label>
+                <div id="counsel-slots-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <p class="text-xs text-slate-400 py-2">먼저 위에서 희망 일자를 선택해주세요.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">고민 분류 <span class="text-red-500">*</span></label>
+              <select id="counsel-category" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-medium">
+                <option value="군생활 적응 / 대인관계">군생활 적응 / 동기·선후임 대인관계</option>
+                <option value="신앙 / 영적 갈급함 / 기도제목">신앙 / 영적 갈급함 / 기도제목</option>
+                <option value="진로 / 학업 / 전역 후 미래 고민">진로 / 학업 / 전역 후 미래 고민</option>
+                <option value="이성교제 / 가정사 / 심리 불안">이성교제 / 가정사 / 심리 불안</option>
+                <option value="기타 나눔">기타 나눔</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">사전 나눔 메모 (선택)</label>
+              <textarea id="counsel-topic" rows="3" placeholder="목사님께 미리 전하고 싶은 말씀이나 상황을 편하게 적어주세요. (비공개)" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-trans-navy hover:bg-slate-900 text-white font-bold text-sm shadow-md transition-smooth">
+              1:1 비밀상담 신청하기 →
+            </button>
+
+          </form>
+        </div>
+
+        <!-- Form 2: 상담 내역 비밀 조회하기 -->
+        <div id="form-counsel-check" class="hidden max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200">
+          <form id="form-counseling-check-submit" class="space-y-4">
+            <h3 class="text-base font-bold text-slate-900 mb-1">신청 내역 안전 조회</h3>
+            <p class="text-xs text-slate-500 mb-4">신청 시 입력하셨던 휴대전화 번호와 4자리 비밀번호를 입력해주세요.</p>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">연락처</label>
+              <input type="tel" id="check-phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">비밀번호 (숫자 4자리)</label>
+              <input type="password" id="check-passcode" maxlength="4" required placeholder="4자리 숫자" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-mono">
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition-smooth">
+              신청 현황 확인하기
+            </button>
+          </form>
+
+          <!-- Result Container -->
+          <div id="check-result-container" class="mt-6 space-y-3"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 5. 주말 위문 방문 신청 섹션 (중복 예약 방지 시스템) -->
+    <!-- ======================================================== -->
+    <section id="visitations" class="py-20 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <span class="text-xs font-bold tracking-wider text-amber-700 uppercase bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">VISITATION SYSTEM</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">주말 위문 방문 신청 (중복 방지)</h2>
+          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+            전국 교회 및 선교단체의 따뜻한 위문 발걸음에 감사드립니다.<br>
+            <strong>특정 주말에 위문이 몰리는 중복을 방지하기 위해 ‘실시간 슬롯 예약제’</strong>로 운영됩니다. 아래 캘린더에서 빈 슬롯(초록색)을 확인하신 후 신청서를 제출해 주세요.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Left: 8주간 주말 슬롯 현황 캘린더 (7 cols) -->
+          <div class="lg:col-span-7 bg-[#F8FAFC] rounded-3xl p-6 border border-slate-200">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base font-bold text-slate-900">🗓️ 주말 위문 가능 현황 캘린더</h3>
+              <div class="flex items-center gap-3 text-xs">
+                <span class="flex items-center gap-1 text-emerald-700 font-semibold"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> 신청가능</span>
+                <span class="flex items-center gap-1 text-amber-700 font-semibold"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> 조율중</span>
+                <span class="flex items-center gap-1 text-red-600 font-semibold"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> 마감</span>
+              </div>
+            </div>
+
+            <!-- Slots Grid -->
+            <div id="visitation-slots-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[500px] overflow-y-auto pr-1">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+
+          <!-- Right: 위문 신청서 작성 폼 (5 cols) -->
+          <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-1">위문 방문 신청서 작성</h3>
+            <p class="text-xs text-slate-500 mb-6">위 캘린더에서 날짜를 선택하시면 자동 입력됩니다.</p>
+
+            <form id="form-visitation-apply" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">방문 희망 일자 <span class="text-red-500">*</span></label>
+                <input type="date" id="visit-date" required class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-semibold">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">참석 예배 선택</label>
+                <select id="visit-service-type" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-medium">
+                  <option value="주일 2부 (11:00) 연합예배">주일 2부 (11:00) 연합예배 (권장)</option>
+                  <option value="주일 1부 (09:30) 대예배">주일 1부 (09:30) 대예배</option>
+                  <option value="토요 특별 위문">토요 특별 위문 (오후 14:00)</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">교회/단체명 <span class="text-red-500">*</span></label>
+                  <input type="text" id="visit-group-name" required placeholder="예: 서울 ○○교회 청년부" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">대표자 성함 <span class="text-red-500">*</span></label>
+                  <input type="text" id="visit-rep-name" required placeholder="홍길동 목사/장로" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="sm:col-span-2">
+                  <label class="block text-xs font-bold text-slate-700 mb-1">대표 연락처 <span class="text-red-500">*</span></label>
+                  <input type="tel" id="visit-phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">방문 인원</label>
+                  <input type="number" id="visit-count" min="1" value="15" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-semibold">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">차량 대수 (위병소 출입 조율용)</label>
+                <input type="number" id="visit-vehicles" min="1" value="2" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">
+                  🎁 위문 간식 및 선물 품목 <span class="text-amber-600 font-medium">(중복 방지 필수)</span>
+                </label>
+                <input type="text" id="visit-refreshments" placeholder="예: 햄버거 200개, 음료수, 핫팩 200개" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                <p class="text-[11px] text-slate-400 mt-0.5">인접 주차와의 간식 품목 중복을 방지하기 위해 기재해주세요.</p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">사역 희망 내용 (특송, 간증, 식사 등)</label>
+                <textarea id="visit-requests" rows="2" placeholder="예: 예배 중 청년 특송 1곡, 간식 직접 배부 희망" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm shadow-sm transition-smooth">
+                위문 신청서 제출하기 →
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 6. 후원금 안내 & 입금 알림 (우리은행) -->
+    <!-- ======================================================== -->
+    <section id="donations" class="py-20 bg-[#F3F6F9] border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-3.5 py-1 rounded-full border border-purple-200">SUPPORT & DONATION</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">국군수송중앙교회 선교 후원</h2>
+          <p class="text-sm text-slate-500 mt-2">
+            국군수송사령부 장병들에게 복음을 전하고 따뜻한 위로와 세례를 베푸는 사역에 동역해 주셔서 감사합니다.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <!-- 계좌 카드 -->
+          <div class="bg-gradient-to-br from-trans-navy-dark via-trans-navy to-trans-green text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between border-2 border-trans-gold/30">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-bold tracking-widest text-sky-200 uppercase">OFFICIAL DONATION ACCOUNT</span>
+                <span class="text-xs bg-white/20 text-white px-3 py-1 rounded-full border border-white/30 font-semibold">우리은행 공식</span>
+              </div>
+              
+              <div class="mb-6">
+                <p class="text-xs text-slate-300 mb-1">우리은행 입금 계좌</p>
+                <div class="flex items-center justify-between bg-black/20 p-4 rounded-2xl border border-white/15">
+                  <span id="bank-account-number" class="text-xl sm:text-2xl font-mono font-bold tracking-wider text-amber-300">1002-111-884400</span>
+                  <button onclick="copyBankAccount()" class="px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-xl transition-smooth shadow-sm">
+                    📋 복사하기
+                  </button>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-200">
+                <p>👤 <strong>예금주:</strong> 국군수송중앙교회 (김요한)</p>
+                <p>📍 <strong>사용 목적:</strong> 수송 장병 간식 및 성경책 보급, 세례식 축하 선물, 도서/문화 지원</p>
+              </div>
+            </div>
+
+            <!-- 우리WON뱅킹 모바일 앱 푸시 안내 팁 -->
+            <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs">
+              <span class="text-slate-300">목사님 휴대폰 우리WON뱅킹 앱 알림 연동</span>
+              <button onclick="document.getElementById('modal-wonbank-guide').classList.remove('hidden')" class="text-amber-300 underline font-semibold">
+                입금 알림 설정 가이드 ⓘ
+              </button>
+            </div>
+          </div>
+
+          <!-- 후원 완료 통보 폼 (목사님 관리자 알림 연동) -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-1">후원 완료 통보서</h3>
+            <p class="text-xs text-slate-500 mb-5">입금 후 내용을 남겨주시면 목사님께 알림이 전달되며 감사 인사를 드립니다.</p>
+
+            <form id="form-donation-notify" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">입금자명 (또는 단체명) <span class="text-red-500">*</span></label>
+                  <input type="text" id="donor-name" required placeholder="예: 김성도 또는 ○○교회" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">후원 금액 (원)</label>
+                  <input type="text" id="donor-amount" placeholder="예: 50,000" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">후원 목적</label>
+                  <select id="donor-purpose" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy font-medium">
+                    <option value="장병 간식 및 식사 후원">장병 간식 및 식사 후원</option>
+                    <option value="장병 세례식 및 성경 보급">장병 세례식 및 성경 보급</option>
+                    <option value="교회 시설 및 도서 비품 지원">교회 시설 및 도서 비품 지원</option>
+                    <option value="일반 선교 헌금">일반 선교 헌금</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">입금 일자</label>
+                  <input type="date" id="donor-date" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">연락처 (선택 - 감사 문자용)</label>
+                <input type="tel" id="donor-phone" placeholder="010-0000-0000" class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">목사님께 전하는 기도제목 / 나눔</label>
+                <textarea id="donor-prayer" rows="2" placeholder="목사님과 교회 성도들이 함께 기도할 기도제목을 적어주세요." class="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl bg-trans-navy hover:bg-slate-900 text-white font-bold text-sm shadow-sm transition-smooth">
+                후원 통보서 전송하기 →
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-trans-navy-dark text-slate-400 py-12 border-t-2 border-trans-gold text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+          <div class="flex items-center gap-3.5">
+            <img src="/static/images/church-logo.png" alt="국군수송사령부 국군수송중앙교회 로고" class="w-10 h-10 object-contain drop-shadow-sm" style="width: 40px; height: 40px; max-width: 40px; max-height: 40px;">
+            <div>
+              <span class="text-white font-bold text-sm block">국군수송사령부 국군수송중앙교회</span>
+              <span class="text-[11px] text-slate-400">R.O.K. Transportation Command Central Church</span>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-slate-300">
+            <span>📞 교회 행정실: 053-850-1114</span>
+            <span>📍 국군수송사령부 국군수송중앙교회</span>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
+          <p>⚠️ 군사 보안 유의 안내: 본 웹사이트 내 군사 기밀, 부대 작전 정보 및 미인가 시설물 사진의 게시를 엄격히 금지합니다.</p>
+          <p>© 2026 ROK Transportation Command Central Church. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 7. ADMIN DASHBOARD VIEW (목사님/군종병 전용) -->
+  <!-- ======================================================== -->
+  <div id="admin-dashboard-view" class="hidden min-h-screen bg-slate-100 text-slate-800">
+    
+    <!-- Admin Top Bar -->
+    <header class="bg-trans-navy-dark text-white border-b-2 border-trans-gold sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="/static/images/church-logo.png" alt="로고" class="w-8 h-8 object-contain" style="width: 32px; height: 32px; max-width: 32px; max-height: 32px;">
+          <h2 class="font-bold text-base tracking-tight">국군수송중앙교회 통합 사역 관리자 패널</h2>
+        </div>
+        <div class="flex items-center gap-4">
+          <button onclick="closeAdminDashboard()" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800">
+            홈페이지 메인으로 나가기
+          </button>
+          <button onclick="adminLogout()" class="text-xs font-bold text-red-400 hover:text-red-300">
+            로그아웃
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Statistics Widget Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <p class="text-xs text-slate-500 font-medium">대기중 상담</p>
+          <p id="stat-pending-counsel" class="text-2xl font-extrabold text-amber-600 mt-1">0</p>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <p class="text-xs text-slate-500 font-medium">확정된 상담</p>
+          <p id="stat-confirmed-counsel" class="text-2xl font-extrabold text-trans-navy mt-1">0</p>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <p class="text-xs text-slate-500 font-medium">대기중 위문</p>
+          <p id="stat-pending-visit" class="text-2xl font-extrabold text-amber-600 mt-1">0</p>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <p class="text-xs text-slate-500 font-medium">확정된 위문</p>
+          <p id="stat-approved-visit" class="text-2xl font-extrabold text-trans-green mt-1">0</p>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <p class="text-xs text-slate-500 font-medium">신규 후원 통보</p>
+          <p id="stat-new-donations" class="text-2xl font-extrabold text-purple-600 mt-1">0</p>
+        </div>
+      </div>
+
+      <!-- Admin Navigation Tabs -->
+      <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
+        <button id="adm-tab-btn-counsel" onclick="switchAdminTab('counsel')" class="px-4 py-2.5 rounded-xl font-bold text-xs bg-trans-navy text-white shadow-xs">
+          🤝 상담 관리 & 구글캘린더
+        </button>
+        <button id="adm-tab-btn-visit" onclick="switchAdminTab('visit')" class="px-4 py-2.5 rounded-xl font-bold text-xs bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">
+          🎁 위문 신청 승인 (중복방지)
+        </button>
+        <button id="adm-tab-btn-event" onclick="switchAdminTab('event')" class="px-4 py-2.5 rounded-xl font-bold text-xs bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">
+          ✨ 행사 명단 & 엑셀 다운로드
+        </button>
+        <button id="adm-tab-btn-donation" onclick="switchAdminTab('donation')" class="px-4 py-2.5 rounded-xl font-bold text-xs bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">
+          💖 후원금 통보 내역
+        </button>
+        <button id="adm-tab-btn-slots" onclick="switchAdminTab('slots')" class="px-4 py-2.5 rounded-xl font-bold text-xs bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">
+          ⏰ 목사님 상담 가능 시간 설정
+        </button>
+      </div>
+
+      <!-- Tab Content 1: 상담 관리 -->
+      <div id="adm-sec-counsel" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-bold text-slate-900">상담 신청 목록 및 구글 캘린더 연동</h3>
+          <p class="text-xs text-slate-500">목사님 캘린더 추가 버튼을 누르면 구글 캘린더에 일정 등록 창이 즉시 열립니다.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 border-b text-slate-600">
+                <th class="py-2.5 px-3">희망 일시</th>
+                <th class="py-2.5 px-3">신청자/소속</th>
+                <th class="py-2.5 px-3">고민 분류 / 내용</th>
+                <th class="py-2.5 px-3">진행 상태</th>
+                <th class="py-2.5 px-3">구글 캘린더</th>
+                <th class="py-2.5 px-3">목사님 비공개 메모</th>
+              </tr>
+            </thead>
+            <tbody id="admin-counseling-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: 위문 관리 (중복 방지 컨트롤 타워) -->
+      <div id="adm-sec-visit" class="hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">주말 위문 신청 승인 & 중복 방지 제어</h3>
+            <p class="text-xs text-slate-500">승인 시 해당 주말 날짜는 즉시 '예약 마감'으로 변경되어 다른 단체의 중복 신청이 차단됩니다.</p>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 border-b text-slate-600">
+                <th class="py-2.5 px-3">방문 희망일</th>
+                <th class="py-2.5 px-3">방문 단체 / 대표자</th>
+                <th class="py-2.5 px-3">🎁 간식/위문품 품목</th>
+                <th class="py-2.5 px-3">상태</th>
+                <th class="py-2.5 px-3">승인/반려 조작</th>
+              </tr>
+            </thead>
+            <tbody id="admin-visitation-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: 행사 & 참가자 명단 (엑셀 다운로드) -->
+      <div id="adm-sec-event" class="hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-base font-bold text-slate-900">특별 행사별 접수자 명단 관리 및 행정 보고용 엑셀 출력</h3>
+        </div>
+        <div id="admin-events-list-container"></div>
+      </div>
+
+      <!-- Tab Content 4: 후원 통보 내역 -->
+      <div id="adm-sec-donation" class="hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-bold text-slate-900">우리은행 후원 통보 접수 내역</h3>
+          <p class="text-xs text-slate-500">후원자가 입금 후 웹에서 남긴 통보 내역입니다. 확인 후 체크 버튼을 눌러주세요.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 border-b text-slate-600">
+                <th class="py-2.5 px-3">입금 일자</th>
+                <th class="py-2.5 px-3">후원자명 / 연락처</th>
+                <th class="py-2.5 px-3">후원 금액</th>
+                <th class="py-2.5 px-3">후원 목적 / 기도제목</th>
+                <th class="py-2.5 px-3">확인 여부</th>
+                <th class="py-2.5 px-3">처리</th>
+              </tr>
+            </thead>
+            <tbody id="admin-donation-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab Content 5: 상담 가능 시간 슬롯 설정기 -->
+      <div id="adm-sec-slots" class="hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="max-w-xl">
+          <h3 class="text-base font-bold text-slate-900 mb-1">목사님 상담 가능 시간대 설정</h3>
+          <p class="text-xs text-slate-500 mb-6">설정한 시간대만 신청자 캘린더에 노출됩니다.</p>
+
+          <!-- 새 슬롯 추가 폼 -->
+          <form id="form-add-slot" class="flex items-center gap-2 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <select id="new-slot-day" class="text-xs border rounded-xl px-3 py-2 font-semibold">
+              <option value="화요일">화요일</option>
+              <option value="목요일">목요일</option>
+              <option value="토요일">토요일</option>
+              <option value="월요일">월요일</option>
+              <option value="수요일">수요일</option>
+              <option value="금요일">금요일</option>
+              <option value="일요일">일요일</option>
+            </select>
+            <input type="text" id="new-slot-time" placeholder="예: 14:00~14:50" class="text-xs border rounded-xl px-3 py-2 flex-grow font-mono">
+            <button type="submit" class="px-4 py-2 bg-trans-navy text-white font-bold text-xs rounded-xl hover:bg-slate-900">
+              슬롯 추가
+            </button>
+          </form>
+
+          <!-- 기존 슬롯 목록 -->
+          <div id="admin-slots-list" class="space-y-2"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODALS -->
+  <!-- ======================================================== -->
+
+  <!-- Modal 1: 행사 참가 신청 팝업 -->
+  <div id="event-register-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeEventModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl font-bold">✕</button>
+      
+      <span class="text-[11px] font-bold text-trans-navy bg-blue-50 px-2.5 py-0.5 rounded-md">행사 참가 접수</span>
+      <h3 id="event-modal-title" class="text-lg font-bold text-slate-900 mt-2">행사 제목</h3>
+      <p id="event-modal-desc" class="text-xs text-slate-500 mb-6">일시 및 장소</p>
+
+      <form id="form-event-register" class="space-y-4">
+        <input type="hidden" id="event-modal-id">
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">소속 부대</label>
+            <input type="text" id="event-reg-unit" placeholder="예: 국군수송사 본부근무대" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">계급</label>
+            <input type="text" id="event-reg-rank" placeholder="예: 일병 / 간부" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">성명 <span class="text-red-500">*</span></label>
+            <input type="text" id="event-reg-name" required placeholder="홍길동" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">연락처 <span class="text-red-500">*</span></label>
+            <input type="tel" id="event-reg-phone" required placeholder="010-0000-0000" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+          </div>
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <label class="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-700">
+            <input type="checkbox" id="event-reg-meal" checked class="w-4 h-4 text-trans-navy rounded">
+            <span>식사(특식) 포함을 희망합니다 (정확한 식수 파악용)</span>
+          </label>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">비고 / 문의사항</label>
+          <input type="text" id="event-reg-memo" placeholder="전달할 내용이 있으면 적어주세요." class="w-full px-3 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-trans-navy hover:bg-slate-900 text-white font-bold text-sm shadow-sm transition-smooth mt-2">
+          접수 완료하기 →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: 상담 신청 완료 안내 & 구글 캘린더 안내 -->
+  <div id="counsel-success-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-trans-green flex items-center justify-center text-3xl mx-auto mb-4">
+        ✓
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-2">상담 예약이 접수되었습니다!</h3>
+      <p id="counsel-success-summary" class="text-xs text-trans-navy font-semibold mb-4 bg-blue-50 py-2 px-3 rounded-xl">일시 정보</p>
+      
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-slate-600 text-left space-y-2 mb-6">
+        <p>🔑 <strong>조회용 비밀번호:</strong> <span id="counsel-success-passcode" class="font-bold text-trans-navy font-mono text-sm"></span></p>
+        <p>• 목사님께서 일정을 확인하신 후 휴대전화로 확정 문자를 전송해 드립니다.</p>
+        <p>• [내 신청 내역 조회] 탭에서 위 4자리 비밀번호로 언제든 진행 상태를 확인하실 수 있습니다.</p>
+      </div>
+
+      <button onclick="closeCounselingSuccessModal()" class="w-full py-3 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition-smooth">
+        확인 완료
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 3: 관리자 PIN 로그인 모달 -->
+  <div id="admin-login-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xs w-full p-6 shadow-2xl text-center relative">
+      <button onclick="closeAdminAuthModal()" class="absolute top-4 right-4 text-slate-400 text-lg">✕</button>
+      <div class="text-2xl mb-2">🔒</div>
+      <h3 class="text-base font-bold text-slate-900 mb-1">목회자/관리자 인증</h3>
+      <p class="text-xs text-slate-400 mb-4">관리자 PIN 번호를 입력해주세요.<br><span class="text-slate-500 font-mono">(기본값: 1111)</span></p>
+
+      <form id="form-admin-login" class="space-y-4">
+        <input type="password" id="admin-pin-input" maxlength="10" required placeholder="PIN 번호" class="w-full text-center tracking-widest text-lg font-mono px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-trans-navy">
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-trans-navy text-white font-bold text-xs hover:bg-slate-900">
+          인증 및 접속
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: 우리WON뱅킹 모바일 앱 알림 가이드 -->
+  <div id="modal-wonbank-guide" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="document.getElementById('modal-wonbank-guide').classList.add('hidden')" class="absolute top-5 right-5 text-slate-400 text-lg">✕</button>
+      <h3 class="text-lg font-bold text-slate-900 mb-2">우리WON뱅킹 무료 입출금 푸시 알림 설정법</h3>
+      <p class="text-xs text-slate-500 mb-4">목사님의 스마트폰에서 1분 만에 설정하시면 입금 즉시 알림이 울립니다.</p>
+
+      <div class="space-y-3 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl">
+        <p>1️⃣ 스마트폰에서 <strong>우리WON뱅킹</strong> 앱 실행 및 로그인</p>
+        <p>2️⃣ 우측 하단 <strong>[전체메뉴(≡)]</strong> $\rightarrow$ 우측 상단 <strong>[설정(톱니바퀴)]</strong> 선택</p>
+        <p>3️⃣ <strong>[알림설정]</strong> $\rightarrow$ <strong>[입출금 알림]</strong> 메뉴 터치</p>
+        <p>4️⃣ 국군수송중앙교회 후원 계좌 선택 후 <strong>'푸시(PUSH) 알림 받기'</strong> 켜기 (무료)</p>
+        <p class="text-trans-navy font-semibold pt-1">✨ 이제 성도님들이 후원금을 입금하실 때마다 스마트폰에 즉각 알림이 표시됩니다!</p>
+      </div>
+
+      <button onclick="document.getElementById('modal-wonbank-guide').classList.add('hidden')" class="mt-6 w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold">
+        닫기
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>

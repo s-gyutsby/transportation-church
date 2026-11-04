@@ -1,0 +1,19 @@
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Database (optional: exclude local test db or include seed db)
+# church.db is initialized automatically via database.py if missing
+*.db-journal

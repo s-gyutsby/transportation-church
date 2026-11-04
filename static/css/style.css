@@ -1,0 +1,122 @@
+/* 국군수송중앙교회 (국군수송사령부) Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* 국군수송사령부 엠블럼 색상 팔레트 */
+  --trans-navy: #0A2E5C;        /* 상단 사령부 딥 블루 */
+  --trans-navy-dark: #061B36;   /* 심야 네이비 */
+  --trans-green: #2B5927;       /* 중앙 지구본 국방 그린 */
+  --trans-green-light: #3D7537; /* 밝은 국방 그린 */
+  --trans-sky: #3BA7D8;         /* 하단 추진 하늘색 */
+  --trans-gold: #DDA112;        /* 황금별 & 앵커 골드 */
+  --trans-gold-light: #F7C644;  /* 골드 하이라이트 */
+  --trans-red: #D32F2F;         /* 상단 화살촉 레드 */
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  color: #1E293B;
+  background-color: #F3F6F9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism effects */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Ensure home navbar logo is strictly neat & appropriately sized */
+.nav-logo-img {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+/* 국군수송사령부 엠블럼과 조화를 이루는 영적이고 웅장한 히어로 그라디언트 */
+.hero-gradient {
+  background: linear-gradient(145deg, #061B36 0%, #0A2E5C 45%, #1C3B4B 75%, #1E3D22 100%);
+  position: relative;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(59, 167, 216, 0.18) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(43, 89, 39, 0.22) 0%, transparent 50%);
+  pointer-events-none;
+}
+
+/* 수송사령부 엠블럼 테마 배지 */
+.badge-trans-navy {
+  background-color: #E8EEF5;
+  color: #0A2E5C;
+  border: 1px solid #C4D5E8;
+}
+
+.badge-trans-green {
+  background-color: #EDF5EC;
+  color: #234E20;
+  border: 1px solid #C9E2C6;
+}
+
+.badge-trans-sky {
+  background-color: #EBF6FC;
+  color: #0F6F9C;
+  border: 1px solid #BCE2F5;
+}
+
+.badge-trans-gold {
+  background-color: #FEF8E7;
+  color: #996A00;
+  border: 1px solid #FBE7A8;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EEF2F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Card hover effect */
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -10px rgba(10, 46, 92, 0.15);
+}
+
+/* Active tab state */
+.tab-active {
+  color: #0A2E5C !important;
+  border-bottom: 2px solid #0A2E5C !important;
+  font-weight: 800 !important;
+}
+
+/* Pulsing dot for open slots */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
+}
+
+.pulse-live {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}

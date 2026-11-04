@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="100" fill="#E0F2FE"/>
+  <circle cx="100" cy="100" r="98" stroke="#0284C7" stroke-width="4"/>
+  <!-- Body/Suit -->
+  <path d="M40 185 C40 145 65 130 100 130 C135 130 160 145 160 185 Z" fill="#0F172A"/>
+  <!-- Shirt & Blue Tie -->
+  <path d="M88 130 H112 V150 H88 Z" fill="#FFFFFF"/>
+  <polygon points="100,135 94,175 106,175" fill="#2563EB"/>
+  <!-- Head -->
+  <circle cx="100" cy="85" r="38" fill="#FED7AA"/>
+  <!-- Hair (Younger, energetic style) -->
+  <path d="M64 80 C64 50 78 45 100 45 C122 45 136 50 136 80 C136 82 128 60 100 60 C72 60 64 82 64 80 Z" fill="#2D3748"/>
+  <!-- Eyes & Bright Warm Smile -->
+  <circle cx="87" cy="84" r="3.5" fill="#2D3748"/>
+  <circle cx="113" cy="84" r="3.5" fill="#2D3748"/>
+  <path d="M90 100 Q100 112 110 100" stroke="#2D3748" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Chaplain Cross Badge -->
+  <circle cx="145" cy="155" r="14" fill="#38BDF8"/>
+  <path d="M143 147 H147 V153 H151 V157 H147 V163 H143 V157 H139 V153 H143 Z" fill="#FFFFFF"/>
+</svg>

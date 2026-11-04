@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <!-- Background Badge -->
+  <defs>
+    <linearGradient id="churchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Shield -->
+  <path d="M120 16 L204 46 V124 C204 174 168 214 120 226 C72 214 36 174 36 124 V46 Z" fill="url(#churchGrad)" stroke="url(#goldGrad)" stroke-width="6" stroke-linejoin="round"/>
+  
+  <!-- Golden Cross -->
+  <path d="M108 55 H132 V95 H166 V117 H132 V185 H108 V117 H74 V95 H108 Z" fill="url(#goldGrad)" />
+  
+  <!-- Rays / Light -->
+  <circle cx="120" cy="106" r="48" stroke="#FDE68A" stroke-width="2" stroke-dasharray="4 4" opacity="0.6"/>
+  
+  <!-- Division 11 Subtext or Star -->
+  <path d="M120 28 L123 35 H131 L125 40 L127 47 L120 43 L113 47 L115 40 L109 35 H117 Z" fill="#FCD34D"/>
+</svg>
