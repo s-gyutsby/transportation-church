@@ -3,12 +3,25 @@ Database configuration and initial seed data for 국군수송중앙교회 (국�
 """
 import sqlite3
 import os
+import shutil
 import json
 from datetime import datetime, timedelta
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'church.db')
+# Vercel 서버리스 환경 (/tmp 디렉토리만 쓰기 가능) 자동 대응
+if os.environ.get('VERCEL'):
+    DB_PATH = '/tmp/church.db'
+    bundled_db = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'church.db')
+    if not os.path.exists(DB_PATH) and os.path.exists(bundled_db):
+        try:
+            shutil.copyfile(bundled_db, DB_PATH)
+        except Exception:
+            pass
+else:
+    DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'church.db')
 
 def get_db_connection():
+    if os.environ.get('VERCEL') and not os.path.exists(DB_PATH):
+        init_db()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
