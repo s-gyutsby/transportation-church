@@ -636,16 +636,9 @@ def check_donation(id):
 # PAGE ROUTE
 # ==========================================
 
-@app.route('/debug')
-def debug_env():
-    env_keys = {k: str(v) for k, v in request.environ.items() if k.startswith('HTTP_') or k in ['PATH_INFO', 'SCRIPT_NAME', 'REQUEST_URI']}
-    return jsonify(env_keys)
-
 @app.route('/')
 @app.route('/api/index')
 def index():
-    if request.args.get('debug') == '1':
-        return jsonify({k: v for k, v in request.environ.items() if isinstance(v, str)})
     return render_template('index.html')
 
 if __name__ == '__main__':
