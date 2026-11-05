@@ -37,9 +37,56 @@
   <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none"></div>
 
   <!-- ======================================================== -->
-  <!-- 1. PUBLIC VIEW (수송 장병, 군 가족, 외부 위문 성도용) -->
+  <!-- 0. PRIVATE LOCK VIEW (비공개 운영 전환 화면) -->
   <!-- ======================================================== -->
-  <div id="main-public-view">
+  <div id="private-lock-view" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#061B36] via-[#0A2E5C] to-[#1E3D22] p-4 text-white">
+    <div class="max-w-md w-full bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 sm:p-10 shadow-2xl text-center">
+      
+      <!-- Command Logo -->
+      <div class="w-20 h-20 mx-auto mb-6 p-2.5 bg-white/15 backdrop-blur-md rounded-full border border-white/30 flex items-center justify-center shadow-inner">
+        <img src="/static/images/church-logo.png" alt="국군수송사령부 국군수송중앙교회 로고" class="w-16 h-16 object-contain drop-shadow-md">
+      </div>
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold mb-4 border border-amber-400/30">
+        <span>🔒 비공개 전환 안내</span>
+      </div>
+
+      <h1 class="text-2xl font-extrabold tracking-tight mb-1 text-white">국군수송중앙교회</h1>
+      <p class="text-[11px] text-slate-300 uppercase tracking-widest font-semibold mb-6">R.O.K. Transportation Command</p>
+
+      <div class="bg-black/30 rounded-2xl p-4 text-xs text-slate-200 leading-relaxed text-left mb-6 border border-white/10 space-y-2">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold">•</span>
+          <span>본 홈페이지는 현재 <strong>비공개 상태</strong>로 전환되었습니다.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold">•</span>
+          <span>일반 장병 및 외부 방문자의 웹사이트 접속 및 신청 접수가 일시 중단됩니다.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold">•</span>
+          <span>관리 권한이 있는 목회자 및 담당자는 아래 비밀번호(PIN)를 입력하여 관리자 화면으로 진입할 수 있습니다.</span>
+        </div>
+      </div>
+
+      <form id="form-private-unlock" class="space-y-3">
+        <div>
+          <label class="block text-left text-xs font-bold text-slate-300 mb-1.5">관리자 인증 비밀번호 (PIN)</label>
+          <input type="password" id="private-pin-input" maxlength="10" required placeholder="PIN 입력 (기본값: 1111)" class="w-full text-center tracking-widest text-base font-mono px-4 py-3 rounded-xl bg-white/15 border border-white/30 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg transition-smooth">
+          관리자 인증 및 접속 →
+        </button>
+      </form>
+
+      <p class="text-[11px] text-slate-400 mt-6">© 2026 국군수송사령부 국군수송중앙교회</p>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 1. PUBLIC VIEW (비공개 전환으로 기본 숨김 처리됨) -->
+  <!-- ======================================================== -->
+  <div id="main-public-view" class="hidden">
 
     <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/90 shadow-xs transition-smooth">

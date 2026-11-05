@@ -47,20 +47,44 @@ async function handleAdminLogin(e) {
 }
 
 function showAdminDashboard() {
-  document.getElementById('admin-dashboard-view').classList.remove('hidden');
-  document.getElementById('main-public-view').classList.add('hidden');
+  document.getElementById('admin-dashboard-view')?.classList.remove('hidden');
+  document.getElementById('main-public-view')?.classList.add('hidden');
+  document.getElementById('private-lock-view')?.classList.add('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   loadAdminStats();
   switchAdminTab('counsel');
 }
 
 function closeAdminDashboard() {
-  document.getElementById('admin-dashboard-view').classList.add('hidden');
-  document.getElementById('main-public-view').classList.remove('hidden');
-  // Refresh public views
-  loadServicesAndEvents();
-  loadCounselingSlots();
-  loadVisitationCalendar();
+  document.getElementById('admin-dashboard-view')?.classList.add('hidden');
+  const lockView = document.getElementById('private-lock-view');
+  if (lockView) {
+    lockView.classList.remove('hidden');
+  } else {
+    document.getElementById('main-public-view')?.classList.remove('hidden');
+  }
+}
+
+async function handlePrivateUnlock(e) {
+  e.preventDefault();
+  const pin = document.getElementById('private-pin-input').value.trim();
+
+  try {
+    const res = await fetch('/api/admin/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'PIN 번호가 일치하지 않습니다.');
+
+    adminPin = pin;
+    sessionStorage.setItem('11div_admin_pin', pin);
+    showToast('관리자 인증에 성공했습니다.');
+    showAdminDashboard();
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
 }
 
 function adminLogout() {
@@ -523,5 +547,6 @@ async function deleteSlot(slotId) {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('form-admin-login')?.addEventListener('submit', handleAdminLogin);
+  document.getElementById('form-private-unlock')?.addEventListener('submit', handlePrivateUnlock);
   document.getElementById('form-add-slot')?.addEventListener('submit', handleAddSlot);
 });

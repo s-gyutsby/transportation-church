@@ -19,6 +19,9 @@ CORS(app)
 # 초기 DB 세팅
 init_db()
 
+# 비공개 운영 모드 (True: 일반 공개 차단, 관리자 PIN 인증 시에만 접근 허용)
+IS_PRIVATE_MODE = True
+
 def check_admin(req):
     pin = req.headers.get('X-Admin-Pin') or req.args.get('pin')
     conn = get_db_connection()
@@ -28,6 +31,21 @@ def check_admin(req):
     conn.close()
     expected_pin = row['value'] if row else '1111'
     return pin == expected_pin
+
+@app.before_request
+def enforce_private_mode():
+    if not IS_PRIVATE_MODE:
+        return None
+    # 정적 파일 및 메인 진입 페이지, 관리자 PIN 검증은 허용
+    if request.path.startswith('/static') or request.path in ['/', '/api/index', '/api/admin/verify']:
+        return None
+    # 관리자 PIN 인증된 요청은 모든 API 허용
+    if check_admin(request):
+        return None
+    # 일반 공개 API 요청 차단
+    if request.path.startswith('/api/'):
+        return jsonify({'error': '본 웹사이트는 현재 비공개 전환되어 접속이 제한되어 있습니다.'}), 403
+    return None
 
 # ==========================================
 # PUBLIC API: 목회자 & 기본 설정
